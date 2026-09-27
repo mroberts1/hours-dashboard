@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Weekly Hours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#000;--surface:#121216;--hair:rgba(255,255,255,.06);--track:#2B2A33;
+--fg:#fff;--fg2:#8A8A96;--fg3:#77767F;--pill:#2E2D37}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--fg);font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;
+-webkit-font-smoothing:antialiased;padding:10px;width:830px}
+.card{width:800px;background:var(--surface);border:1px solid var(--hair);
+border-radius:27px;padding:40px 46px 44px;margin-bottom:18px}
+.card.master{border-color:rgba(244,63,94,.28)}
+.head{display:flex;justify-content:space-between;align-items:flex-start}
+.period{font-size:58px;font-weight:800;letter-spacing:-.022em;line-height:.95}
+.psub{font-size:11px;font-weight:600;letter-spacing:.13em;color:var(--fg3);
+text-transform:uppercase;margin-top:10px}
+.hr{display:flex;flex-direction:column;align-items:flex-end;gap:11px}
+.tog{display:flex;align-items:center;gap:4px}
+.seg{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+color:var(--fg2);padding:8px 15px;border-radius:999px;border:0;background:transparent;
+cursor:pointer;font-family:inherit;transition:background .18s,color .18s}
+.seg:hover{color:#C9C9D2}
+.seg[aria-pressed=true]{background:var(--pill);color:var(--fg)}
+.sl{color:var(--fg3);font-size:13px}
+.badge{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+color:#F43F5E;border:1px solid rgba(244,63,94,.5);background:rgba(244,63,94,.07);
+padding:6px 12px;border-radius:999px}
+.stats{display:flex;gap:56px;margin-top:28px}
+.sv{font-size:28px;font-weight:700;letter-spacing:-.01em}
+.sv.hot{color:#F43F5E}
+.sv.cum{color:var(--fg2)}
+.sl2{font-size:10px;font-weight:600;letter-spacing:.13em;color:var(--fg2);
+text-transform:uppercase;margin-top:6px}
+.gw{display:flex;justify-content:center;margin:40px 0 36px}
+svg .trk{fill:none;stroke:var(--track);stroke-linecap:round}
+svg .val{fill:none;stroke-linecap:round;transition:stroke-dasharray .6s cubic-bezier(.4,0,.2,1)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:30px 52px}
+.mt{display:flex;align-items:center;gap:10px}
+.dot{width:8px;height:8px;border-radius:50%;flex:none}
+.ml{font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--fg2);text-transform:uppercase}
+.ms{font-size:10px;color:var(--fg3);margin-top:4px;margin-left:18px;letter-spacing:.02em}
+.mv{display:flex;align-items:baseline;gap:10px;margin-top:9px;margin-left:18px}
+.mb{font-size:34px;font-weight:700;letter-spacing:-.015em}
+.msep{font-size:23px;color:var(--fg3)}
+.chip{font-size:18px;font-weight:700;padding:4px 10px;border-radius:9px}
+.mu{font-size:10px;font-weight:600;letter-spacing:.11em;color:var(--fg3);
+text-transform:uppercase;margin-top:7px;margin-left:18px}
+.foot{margin-top:36px;padding-top:24px;border-top:1px solid var(--hair)}
+.fl{font-size:10px;font-weight:600;letter-spacing:.13em;color:var(--fg3);
+text-transform:uppercase;margin-bottom:12px}
+.bar{display:flex;height:9px;border-radius:999px;overflow:hidden;gap:3px}
+.bar span{display:block;border-radius:999px}
+.fk{display:flex;gap:24px;margin-top:13px}
+.kk{display:flex;align-items:center;gap:8px}
+.kk .dot{width:7px;height:7px}
+.kt{font-size:11px;font-weight:600;color:var(--fg2)}
+.kt b{color:var(--fg);font-weight:700}
+.nav{display:flex;flex-wrap:wrap;gap:6px;width:800px;margin:4px 0 16px}
+.nav button{font:600 11px/1 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;
+color:var(--fg2);background:var(--surface);border:1px solid var(--hair);padding:9px 14px;
+border-radius:999px;cursor:pointer}
+.nav button:hover{color:#C9C9D2}
+.nav button[aria-current=true]{background:var(--pill);color:var(--fg);border-color:rgba(255,255,255,.18)}
+.card{display:none}.card.on{display:block}
+.note{width:800px;margin:6px 4px 26px;font-size:11px;color:var(--fg2);line-height:1.55}
+</style></head><body>
+<nav class="nav" id="nav"></nav>
+<div id="app"></div>
+<div class="note">
+Ring = each item's share of that week's teaching or driving hours; a full
+sweep would mean it took all of them. The grid shows hours against what was
+scheduled that week. Weekly cards show that week, plus a grey
+running total to date; the Weeks card is the total so far. Use the tabs or the arrow keys to move between weeks.
+</div>
+<script>
+const DATA = {"master": {"period": "WEEKS 1\u20134", "sub": "31 Aug \u2013 27 Sep 2026", "badge": "", "stats": [{"v": "38h15", "l": "Taught"}, {"v": "68h40", "l": "Driven"}], "week_t": "38h15", "week_d": "68h40", "teaching": [{"label": "IN 206", "sub": "Intro Digital Media", "actual": 10.5, "base": 10.5, "color": "#F43F5E"}, {"label": "VM 641", "sub": "Language of Media Arts", "actual": 10.5, "base": 10.5, "color": "#22D3EE"}, {"label": "VM 303", "sub": "Digital Media & Culture", "actual": 12.25, "base": 12.25, "color": "#A855F7"}, {"label": "COMM 2003", "sub": "Hist. Interactive Media", "actual": 5.0, "base": 5.0, "color": "#3B82F6"}], "driving": [{"label": "Alewife", "sub": "Mon + Wed \u00b7 Emerson", "actual": 21.0, "base": 21.0, "color": "#F43F5E", "trips": 6}, {"label": "Wachusett", "sub": "Tue + Thu \u00b7 Emerson", "actual": 11.666666666666664, "base": 11.666666666666666, "color": "#22D3EE", "trips": 7}, {"label": "Fitchburg", "sub": "Fri \u00b7 Fitchburg State", "actual": 6.666666666666666, "base": 6.666666666666666, "color": "#A855F7", "trips": 4}, {"label": "Saxtons River", "sub": "Mon\u2013Fri \u00b7 Vermont Academy", "actual": 29.333333333333332, "base": 26.666666666666664, "color": "#3B82F6", "trips": 22}]}, "weeks": [{"period": "WEEK 01", "sub": "31 Aug \u2013 6 Sep 2026", "badge": "Term starts Wed 2 Sep \u00b7 5 Saxtons runs", "stats": [{"v": "6h30", "l": "Taught"}, {"v": "13h30", "l": "Driven"}, {"v": "6h30", "v2": "13h30", "l": "Taught / driven to date", "cum": true}], "week_t": "6h30", "week_d": "13h30", "teaching": [{"label": "IN 206", "sub": "Intro Digital Media", "actual": 1.75, "base": 1.75, "color": "#F43F5E"}, {"label": "VM 641", "sub": "Language of Media Arts", "actual": 1.75, "base": 1.75, "color": "#22D3EE"}, {"label": "VM 303", "sub": "Digital Media & Culture", "actual": 1.75, "base": 1.75, "color": "#A855F7"}, {"label": "COMM 2003", "sub": "Hist. Interactive Media", "actual": 1.25, "base": 1.25, "color": "#3B82F6"}], "driving": [{"label": "Alewife", "sub": "Mon + Wed \u00b7 Emerson", "actual": 3.5, "base": 3.5, "color": "#F43F5E", "trips": 1}, {"label": "Wachusett", "sub": "Tue + Thu \u00b7 Emerson", "actual": 1.6666666666666665, "base": 1.6666666666666665, "color": "#22D3EE", "trips": 1}, {"label": "Fitchburg", "sub": "Fri \u00b7 Fitchburg State", "actual": 1.6666666666666665, "base": 1.6666666666666665, "color": "#A855F7", "trips": 1}, {"label": "Saxtons River", "sub": "Mon\u2013Fri \u00b7 Vermont Academy", "actual": 6.666666666666666, "base": 6.666666666666666, "color": "#3B82F6", "trips": 5}]}, {"period": "WEEK 02", "sub": "7 Sep \u2013 13 Sep 2026", "badge": "Labor Day \u00b7 6 Saxtons runs \u00b7 double Friday", "stats": [{"v": "8h15", "l": "Taught"}, {"v": "16h30", "l": "Driven"}, {"v": "14h45", "v2": "30h00", "l": "Taught / driven to date", "cum": true}], "week_t": "8h15", "week_d": "16h30", "teaching": [{"label": "IN 206", "sub": "Intro Digital Media", "actual": 1.75, "base": 1.75, "color": "#F43F5E"}, {"label": "VM 641", "sub": "Language of Media Arts", "actual": 1.75, "base": 1.75, "color": "#22D3EE"}, {"label": "VM 303", "sub": "Digital Media & Culture", "actual": 3.5, "base": 3.5, "color": "#A855F7"}, {"label": "COMM 2003", "sub": "Hist. Interactive Media", "actual": 1.25, "base": 1.25, "color": "#3B82F6"}], "driving": [{"label": "Alewife", "sub": "Mon + Wed \u00b7 Emerson", "actual": 3.5, "base": 3.5, "color": "#F43F5E", "trips": 1}, {"label": "Wachusett", "sub": "Tue + Thu \u00b7 Emerson", "actual": 3.333333333333333, "base": 3.333333333333333, "color": "#22D3EE", "trips": 2}, {"label": "Fitchburg", "sub": "Fri \u00b7 Fitchburg State", "actual": 1.6666666666666665, "base": 1.6666666666666665, "color": "#A855F7", "trips": 1}, {"label": "Saxtons River", "sub": "Mon\u2013Fri \u00b7 Vermont Academy", "actual": 8.0, "base": 6.666666666666666, "color": "#3B82F6", "trips": 6}]}, {"period": "WEEK 03", "sub": "14 Sep \u2013 20 Sep 2026", "badge": "5 Saxtons runs", "stats": [{"v": "11h45", "l": "Taught"}, {"v": "18h40", "l": "Driven"}, {"v": "26h30", "v2": "48h40", "l": "Taught / driven to date", "cum": true}], "week_t": "11h45", "week_d": "18h40", "teaching": [{"label": "IN 206", "sub": "Intro Digital Media", "actual": 3.5, "base": 3.5, "color": "#F43F5E"}, {"label": "VM 641", "sub": "Language of Media Arts", "actual": 3.5, "base": 3.5, "color": "#22D3EE"}, {"label": "VM 303", "sub": "Digital Media & Culture", "actual": 3.5, "base": 3.5, "color": "#A855F7"}, {"label": "COMM 2003", "sub": "Hist. Interactive Media", "actual": 1.25, "base": 1.25, "color": "#3B82F6"}], "driving": [{"label": "Alewife", "sub": "Mon + Wed \u00b7 Emerson", "actual": 7.0, "base": 7.0, "color": "#F43F5E", "trips": 2}, {"label": "Wachusett", "sub": "Tue + Thu \u00b7 Emerson", "actual": 3.333333333333333, "base": 3.333333333333333, "color": "#22D3EE", "trips": 2}, {"label": "Fitchburg", "sub": "Fri \u00b7 Fitchburg State", "actual": 1.6666666666666665, "base": 1.6666666666666665, "color": "#A855F7", "trips": 1}, {"label": "Saxtons River", "sub": "Mon\u2013Fri \u00b7 Vermont Academy", "actual": 6.666666666666666, "base": 6.666666666666666, "color": "#3B82F6", "trips": 5}]}, {"period": "WEEK 04", "sub": "21 Sep \u2013 27 Sep 2026", "badge": "6 Saxtons runs \u00b7 double Friday", "stats": [{"v": "11h45", "l": "Taught"}, {"v": "20h00", "l": "Driven"}, {"v": "38h15", "v2": "68h40", "l": "Taught / driven to date", "cum": true}], "week_t": "11h45", "week_d": "20h00", "teaching": [{"label": "IN 206", "sub": "Intro Digital Media", "actual": 3.5, "base": 3.5, "color": "#F43F5E"}, {"label": "VM 641", "sub": "Language of Media Arts", "actual": 3.5, "base": 3.5, "color": "#22D3EE"}, {"label": "VM 303", "sub": "Digital Media & Culture", "actual": 3.5, "base": 3.5, "color": "#A855F7"}, {"label": "COMM 2003", "sub": "Hist. Interactive Media", "actual": 1.25, "base": 1.25, "color": "#3B82F6"}], "driving": [{"label": "Alewife", "sub": "Mon + Wed \u00b7 Emerson", "actual": 7.0, "base": 7.0, "color": "#F43F5E", "trips": 2}, {"label": "Wachusett", "sub": "Tue + Thu \u00b7 Emerson", "actual": 3.333333333333333, "base": 3.333333333333333, "color": "#22D3EE", "trips": 2}, {"label": "Fitchburg", "sub": "Fri \u00b7 Fitchburg State", "actual": 1.6666666666666665, "base": 1.6666666666666665, "color": "#A855F7", "trips": 1}, {"label": "Saxtons River", "sub": "Mon\u2013Fri \u00b7 Vermont Academy", "actual": 8.0, "base": 6.666666666666666, "color": "#3B82F6", "trips": 6}]}]};
+const CX=150, CY=144, R0=132, STEP=22, SW=9;
+const arc = r => `M ${CX-r} ${CY} A ${r} ${r} 0 0 1 ${CX+r} ${CY}`;
+const fmt = h => `${Math.floor(h)}h${String(Math.round((h-Math.floor(h))*60)).padStart(2,'0')}`;
+
+function card(c, idx){
+  return `<div class="card${idx<0?' master':''}">
+    <div class="head">
+      <div><div class="period">${c.period}</div><div class="psub">${c.sub}</div></div>
+      <div class="hr">
+        <div class="tog">
+          <button class="seg" data-c="${idx}" data-m="teaching" aria-pressed="true">Teaching</button>
+          <span class="sl">/</span>
+          <button class="seg" data-c="${idx}" data-m="driving" aria-pressed="false">Driving</button>
+        </div>
+        ${c.badge?`<div class="badge">${c.badge}</div>`:''}
+      </div>
+    </div>
+    <div class="stats">${c.stats.map(s=>`<div>
+      <div class="sv${s.hot?' hot':''}${s.cum?' cum':''}">${s.cum?`${s.v}<span class="msep"> / </span>${s.v2}`:s.v}</div><div class="sl2">${s.l}</div></div>`).join('')}
+    </div>
+    <div class="gw"><svg width="300" height="152" viewBox="0 0 300 152"
+      id="g${idx}" role="img" aria-label="completion arcs"></svg></div>
+    <div class="grid" id="r${idx}"></div>
+    <div class="foot">
+      <div class="fl">Where the time went</div>
+      <div class="bar">
+        <span style="background:#3B82F6;width:${c.split}%"></span>
+        <span style="background:#F43F5E;width:${100-c.split}%"></span></div>
+      <div class="fk">
+        <div class="kk"><span class="dot" style="background:#3B82F6"></span>
+          <span class="kt">Teaching <b>${c.split}%</b></span></div>
+        <div class="kk"><span class="dot" style="background:#F43F5E"></span>
+          <span class="kt">Driving <b>${100-c.split}%</b></span></div>
+      </div>
+    </div></div>`;
+}
+
+function draw(idx, rows){
+  const svg = document.getElementById('g'+idx); svg.innerHTML='';
+  rows.forEach((row,i)=>{
+    const tot=rows.reduce((a,x)=>a+x.actual,0);
+    const r=R0-i*STEP, len=Math.PI*r, f=tot?row.actual/tot:0;
+    const t=document.createElementNS('http://www.w3.org/2000/svg','path');
+    t.setAttribute('d',arc(r)); t.setAttribute('class','trk'); t.setAttribute('stroke-width',SW);
+    svg.appendChild(t);
+    const v=document.createElementNS('http://www.w3.org/2000/svg','path');
+    v.setAttribute('d',arc(r)); v.setAttribute('class','val');
+    v.setAttribute('stroke',row.color); v.setAttribute('stroke-width',SW);
+    v.setAttribute('stroke-dasharray',`0 ${len}`);
+    v.style.filter=`drop-shadow(0 0 7px ${row.color}aa)`;
+    svg.appendChild(v);
+    requestAnimationFrame(()=>v.setAttribute('stroke-dasharray',`${f*len} ${len}`));
+  });
+}
+
+function rows(idx, rows_, mode){
+  document.getElementById('r'+idx).innerHTML = rows_.map(r=>{
+    const tot=rows_.reduce((a,x)=>a+x.actual,0);
+    const pct=Math.round(r.actual/tot*100), over=r.actual>r.base+1e-9;
+    const trips = r.trips!==undefined ? ` · ${r.trips} trip${r.trips===1?'':'s'}` : '';
+    return `<div>
+      <div class="mt"><span class="dot" style="background:${r.color}"></span>
+        <span class="ml">${r.label}</span></div>
+      <div class="ms">${r.sub}</div>
+      <div class="mv"><span class="mb" style="color:${r.color}">${fmt(r.actual)}</span>
+        <span class="msep" style="font-size:16px">of ${fmt(r.base)}</span></div>
+      <div class="mu">${pct}% of ${mode}${trips}${over?' · over schedule':''}</div></div>`;
+  }).join('');
+}
+
+function render(idx, mode){
+  const c = idx<0 ? DATA.master : DATA.weeks[idx];
+  draw(idx, c[mode]); rows(idx, c[mode], mode);
+  document.querySelectorAll(`.seg[data-c="${idx}"]`).forEach(b=>
+    b.setAttribute('aria-pressed', b.dataset.m===mode));
+}
+
+const all = [[-1, DATA.master], ...DATA.weeks.map((w,i)=>[i,w])];
+all.forEach(([i,c])=>{
+  const th=c[ 'teaching'].reduce((a,x)=>a+x.actual,0);
+  const dh=c['driving'].reduce((a,x)=>a+x.actual,0);
+  c.split = Math.round(th/(th+dh)*100);
+});
+document.getElementById('app').innerHTML =
+  all.map(([i,c])=>card(c,i)).join('');
+all.forEach(([i])=>render(i,'teaching'));
+const cards=[...document.querySelectorAll('.card')];
+document.getElementById('nav').innerHTML=all.map(([i,c],k)=>
+  `<button data-k="${k}">${i<0?c.period:'Wk '+c.period.slice(-2)}</button>`).join('');
+const tabs=[...document.querySelectorAll('.nav button')];
+let cur=0;
+function show(k){cur=(k+cards.length)%cards.length;
+  cards.forEach((el,j)=>el.classList.toggle('on',j===cur));
+  tabs.forEach((b,j)=>b.setAttribute('aria-current',j===cur));
+  const [i]=all[cur]; render(i,'teaching'); history.replaceState(null,'','#'+cur);}
+tabs.forEach(b=>b.onclick=()=>show(+b.dataset.k));
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);});
+show(parseInt(location.hash.slice(1))||0);
+document.querySelectorAll('.seg').forEach(b=>
+  b.onclick=()=>render(parseInt(b.dataset.c), b.dataset.m));
+</script></body></html>
