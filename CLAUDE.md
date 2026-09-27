@@ -60,10 +60,10 @@ https://mroberts1.github.io/hours-dashboard/ (GitHub Pages, branch `main`).
 | VM 641 (Emerson)     | Mon + Wed  | 1h45 class       |
 | VM 303 (Emerson)     | Tue + Thu  | 1h45 class       |
 | COMM 2003 (Fitchburg)| Fri        | 1h15 class       |
-| Alewife drive        | Mon + Wed  | 3h30 round trip  |
-| Wachusett drive      | Tue + Thu  | 1h40 round trip  |
+| Boston drive         | Mon + Wed  | 3h30 round trip  |
+| Wachusett MBTA drive | Tue + Thu  | 1h40 round trip  |
 | Fitchburg drive      | Fri        | 1h40 round trip  |
-| Saxtons River drive  | Mon-Fri    | 1h20 per run     |
+| Saxtons River drive  | Mon-Fri    | 1h20 round trip  |
 
 Saxtons "double Friday" weeks have 6 runs instead of 5.
 
