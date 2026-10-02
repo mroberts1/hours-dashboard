@@ -47,7 +47,7 @@ https://mroberts1.github.io/hours-dashboard/ (GitHub Pages, branch `main`).
 ## Logging rules
 
 - Weeks 1-5 are filled in. Week 1: term began Wed 2 Sep, one class per
-  Emerson course, Boston trips Wed 2 + Thu 3, 5 Saxtons runs.
+  Emerson course, Boston trip Wed 2, Wachusett trip Thu 3, 5 Saxtons runs.
 - Weeks 6 onward stay empty until Martin logs them. He sends a short note at
   the end of each week (Fri or Sat), e.g. "wk6: IN 206 cancelled Mon,
   Saxtons x4". Anything not mentioned happened as timetabled.
