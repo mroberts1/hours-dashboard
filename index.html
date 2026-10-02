@@ -101,7 +101,7 @@ function card(c, idx){
       <div class="sv${s.hot?' hot':''}${s.cum?' cum':''}">${s.cum?`${s.v}<span class="msep"> / </span>${s.v2}`:s.v}</div><div class="sl2">${s.l}</div></div>`).join('')}
     </div>
     <div class="panes">${['teaching','driving'].map(m=>`<div class="pane">
-      <div class="ph"><span class="pt">${m}</span>
+      <div class="ph"><span class="pt">${m=='teaching'?'Teaching Contact Hours':m}</span>
         <span class="pv">${m==='teaching'?c.week_t:c.week_d} this ${idx<0?'period':'week'}</span></div>
       <div class="gw"><svg width="100%" style="max-width:400px" viewBox="0 0 300 152"
         id="g${idx}-${m}" role="img" aria-label="${m} share arcs"></svg></div>
@@ -114,7 +114,7 @@ function card(c, idx){
         <span style="background:#F43F5E;width:${100-c.split}%"></span></div>
       <div class="fk">
         <div class="kk"><span class="dot" style="background:#3B82F6"></span>
-          <span class="kt">Teaching <b>${c.split}%</b></span></div>
+          <span class="kt">Teaching Contact Hours <b>${c.split}%</b></span></div>
         <div class="kk"><span class="dot" style="background:#F43F5E"></span>
           <span class="kt">Driving <b>${100-c.split}%</b></span></div>
       </div>
