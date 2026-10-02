@@ -46,9 +46,9 @@ https://mroberts1.github.io/hours-dashboard/ (GitHub Pages, branch `main`).
 
 ## Logging rules
 
-- Weeks 1-4 are filled in. Week 1: term began Wed 2 Sep, one class per
+- Weeks 1-5 are filled in. Week 1: term began Wed 2 Sep, one class per
   Emerson course, Boston trips Wed 2 + Thu 3, 5 Saxtons runs.
-- Weeks 5 onward stay empty until Martin logs them. He sends a short note at
+- Weeks 6 onward stay empty until Martin logs them. He sends a short note at
   the end of each week (Fri or Sat), e.g. "wk6: IN 206 cancelled Mon,
   Saxtons x4". Anything not mentioned happened as timetabled.
 
@@ -60,7 +60,7 @@ https://mroberts1.github.io/hours-dashboard/ (GitHub Pages, branch `main`).
 | VM 641 (Emerson)     | Mon + Wed  | 1h45 class       |
 | VM 303 (Emerson)     | Tue + Thu  | 1h45 class       |
 | COMM 2003 (Fitchburg)| Fri        | 1h15 class       |
-| Boston drive         | Mon + Wed  | 3h30 round trip  |
+| Boston drive         | Mon + Wed  | 3h00 round trip  |
 | Wachusett MBTA drive | Tue + Thu  | 1h40 round trip  |
 | Fitchburg drive      | Fri        | 1h40 round trip  |
 | Saxtons River drive  | Mon-Fri    | 1h20 round trip  |
