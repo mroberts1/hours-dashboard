@@ -46,11 +46,14 @@ https://mroberts1.github.io/hours-dashboard/ (GitHub Pages, branch `main`).
 
 ## Logging rules
 
-- Weeks 1-5 are filled in. Week 1: term began Wed 2 Sep, one class per
+- Weeks 1-6 are filled in. Week 1: term began Wed 2 Sep, one class per
   Emerson course, Boston trip Wed 2, Wachusett trip Thu 3, 5 Saxtons runs.
-- Weeks 6 onward stay empty until Martin logs them. He sends a short note at
+- Weeks 7 onward stay empty until Martin logs them. He sends a short note at
   the end of each week (Fri or Sat), e.g. "wk6: IN 206 cancelled Mon,
   Saxtons x4". Anything not mentioned happened as timetabled.
+- Week 7: Mon 12 Oct is Indigenous Peoples' Day, a scheduled day off (no
+  Mon classes, no Boston drive). Treat like Labor Day in week 2. Vermont
+  Academy runs as usual that day, so Saxtons is still 5 runs scheduled.
 
 ## Timetable
 
