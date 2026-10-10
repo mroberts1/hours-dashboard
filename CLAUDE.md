@@ -72,8 +72,9 @@ Saxtons "double Friday" weeks have 6 runs instead of 5.
 
 ## Open questions (don't guess, ask Martin)
 
-- Tue 13 Oct and Tue 10 Nov: VM 303's schedule and the Mon/Wed courses'
-  schedules disagree. Martin is checking.
+- Tue 10 Nov: VM 303's schedule and the Mon/Wed courses' schedules
+  disagree. Martin is checking. (Tue 13 Oct is settled: VM 303 meets as
+  normal.)
 - Vermont Academy calendar (affects Saxtons runs from week 13): unknown.
 - Known design nits Martin hasn't ruled on yet: ring colours (red/blue) are
   reused with a different meaning in the bottom split bar; "over schedule"
