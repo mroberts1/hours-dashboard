@@ -46,9 +46,9 @@ https://mroberts1.github.io/hours-dashboard/ (GitHub Pages, branch `main`).
 
 ## Logging rules
 
-- Weeks 1-8 are filled in. Week 1: term began Wed 2 Sep, one class per
+- Weeks 1-9 are filled in. Week 1: term began Wed 2 Sep, one class per
   Emerson course, Boston trip Wed 2, Wachusett trip Thu 3, 5 Saxtons runs.
-- Weeks 9 onward stay empty until Martin logs them. He sends a short note at
+- Weeks 10 onward stay empty until Martin logs them. He sends a short note at
   the end of each week (Fri or Sat), e.g. "wk6: IN 206 cancelled Mon,
   Saxtons x4". Anything not mentioned happened as timetabled.
 - Week 7 (logged): Mon 12 Oct was Indigenous Peoples' Day, a scheduled day
@@ -58,6 +58,9 @@ https://mroberts1.github.io/hours-dashboard/ (GitHub Pages, branch `main`).
 - Week 8 (logged): no Wachusett train Tue. Boston drive ran
   Mon-Thu (4 trips, scheduled stays 2) and Wachusett is 0 of 2. Saxtons 6
   runs incl. Sat, scheduled stays 5 (same as double-Friday weeks).
+- Week 9 (logged): teaching as timetabled. Boston drive ran Mon-Wed (3
+  trips, scheduled stays 2). No Wachusett Tue, Thu ran. Saxtons 5 runs.
+  Fitchburg Fri assumed as timetabled (not mentioned).
 
 ## Timetable
 
