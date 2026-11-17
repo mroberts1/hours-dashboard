@@ -46,9 +46,9 @@ https://mroberts1.github.io/hours-dashboard/ (GitHub Pages, branch `main`).
 
 ## Logging rules
 
-- Weeks 1-10 are filled in. Week 1: term began Wed 2 Sep, one class per
+- Weeks 1-11 are filled in. Week 1: term began Wed 2 Sep, one class per
   Emerson course, Boston trip Wed 2, Wachusett trip Thu 3, 5 Saxtons runs.
-- Weeks 11 onward stay empty until Martin logs them. He sends a short note at
+- Weeks 12 onward stay empty until Martin logs them. He sends a short note at
   the end of each week (Fri or Sat), e.g. "wk6: IN 206 cancelled Mon,
   Saxtons x4". Anything not mentioned happened as timetabled.
 - Week 7 (logged): Mon 12 Oct was Indigenous Peoples' Day, a scheduled day
@@ -64,6 +64,12 @@ https://mroberts1.github.io/hours-dashboard/ (GitHub Pages, branch `main`).
 - Week 10 (logged): teaching as timetabled. Boston drive ran Mon-Wed (3
   trips, scheduled stays 2), Wachusett Thu only (1 of 2). Saxtons 7 runs
   (Mon-Thu, 2 on Fri, Sat), scheduled stays 5. Fitchburg Fri as timetabled.
+- Week 11 (logged): Wed 11 Nov was Veterans Day, no classes. Tue 10 Nov ran
+  a Wednesday schedule (IN 206 + VM 641 met, VM 303 did not). Boston drive
+  Mon + Tue, VM 303 Thu only. Thu drive was Boston via Logan airport
+  (4h round trip) instead of Wachusett: Boston 3 trips, 10h of 6h;
+  Wachusett 0 of 1. Teaching scheduled = actual. Saxtons Mon-Wed only,
+  3 runs, scheduled 3 (Thu/Fri treated as Vermont Academy days off). Fitchburg Fri as timetabled.
 
 ## Timetable
 
@@ -82,9 +88,6 @@ Saxtons "double Friday" weeks have 6 runs instead of 5.
 
 ## Open questions (don't guess, ask Martin)
 
-- Tue 10 Nov: VM 303's schedule and the Mon/Wed courses' schedules
-  disagree. Martin is checking. (Tue 13 Oct is settled: VM 303 meets as
-  normal.)
 - Vermont Academy calendar (affects Saxtons runs from week 13): unknown.
 - Known design nits Martin hasn't ruled on yet: ring colours (red/blue) are
   reused with a different meaning in the bottom split bar; "over schedule"
